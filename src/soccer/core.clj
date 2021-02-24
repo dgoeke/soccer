@@ -6,8 +6,8 @@
 (def result-regex #"^([\w\s]+) (\d+), ([\w\s]+) (\d+)$")
 
 (def win-fn (partial + 3))   ; these functions describe how to modify
-(def lose-fn identity) ;   a score when the corresponding condition
-(def draw-fn inc)      ;   happens
+(def lose-fn identity)       ;   a score when the corresponding condition
+(def draw-fn inc)            ;   happens
 
 ;; parse string into game result: "Sharks 3, Jets 2" => [["Sharks" 3] ["Jets" 2]]
 (defn parse-input-line [text]
