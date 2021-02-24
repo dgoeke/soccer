@@ -1,6 +1,7 @@
-# Leapyear Soccer
+# Soccer Scoring
 
-Calculates ranks for a soccer league when given a list of game results.
+Calculates ranks for a soccer league when given a list of game results. See
+`resources/sample-input.txt` and `resources/expected-output.txt` for data formats.
 
 ## Installation
 
@@ -35,18 +36,24 @@ Pipe input data from stdin:
 Or specify a filename as a parameter:
 
     $ java -jar target/uberjar/soccer-0.1.0-SNAPSHOT-standalone.jar resources/sample-input.txt
+    
+Alternately, use `lein` to run it without building:
+
+    $ lein run < resources/sample-input.txt
 
 ## Future Improvements
 
   * Team name parsing is brittle and can only contain A-Z, a-z, 0-9, _, or spaces.
-  * Line parsing regex should be replaced with something less powerful.
+  * Something less powerful and faster than a regex should be used for line parsing.
   * Malformed input is never checked or handled.
   * Tests are minimal due to time pressure.
   * Inline function descriptions should be converted to docstrings.
   * `assign-ranks` function feels clumsier than it should be; I moved on when it worked
     because of time.
   * Input/output data format should be documented in the repo.
+  * A Dockerfile might be nice so people can avoid installing build tools.
   * Functions/types should have specs added for type checking.
   * If functions/types had specs, we could do generative testing.
-  * Performance not tested on large datasets, but should be roughly O(N log(N)) due to the sort
-    (The rest of the map/reduce operations are lazy and should be mostly linear).
+  * Performance not tested on large datasets, but should be on the order of O(N log(N)) due
+    to the sort. The map/reduce operations are lazy and linear. The tail recursion is eager
+    and linear.
